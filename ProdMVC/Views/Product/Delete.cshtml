@@ -1,0 +1,14 @@
+@model Product
+<h1>
+    ARE YOU SURE YOU WANT TO DELETE THE FOLLOWING ENTRY?
+</h1>
+<h1>@Model.Name</h1>
+<p>@Html.DisplayNameFor(m=>m.Id) : @Html.DisplayFor(m=>m.Id) </p>
+<p>@Html.DisplayNameFor(m=>m.Price) : @Html.DisplayFor(m=>m.Price) </p>
+<p>@Html.DisplayNameFor(m=>m.Stock) : @Html.DisplayFor(m=>m.Stock) </p>
+<hr>
+@using (Html.BeginForm())
+{
+    <input type='submit' value='delete ?' style="background-color:red;"/>
+}
+@Html.ActionLink("Back To List","List")
