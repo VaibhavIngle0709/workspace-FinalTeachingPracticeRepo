@@ -5,22 +5,40 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using EMS.Models;
 
 namespace EMS.Controllers
 {
     public class DeptController : Controller
     {
-        private readonly ILogger<DeptController> _logger;
+        private readonly EmsDbContext context;
 
-        public DeptController(ILogger<DeptController> logger)
+        public DeptController(EmsDbContext _context)
         {
-            _logger = logger;
+            context=_context;
         }
-
          public IActionResult List()
         {
             return View();
         }
+
+
+         public IActionResult Create()
+     {
+        
+        return View();
+     }
+     [HttpPost]
+      public IActionResult Create(Department department)
+     {
+        if(ModelState.IsValid)
+        {
+            context.Departments.Add(department);
+            context.SaveChanges();
+            return RedirectToAction("List");
+        }
+        return View();
+     }
         public IActionResult Index()
         {
             return View();
@@ -33,3 +51,8 @@ namespace EMS.Controllers
         }
     }
 }
+
+
+
+
+
