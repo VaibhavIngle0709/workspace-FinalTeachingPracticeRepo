@@ -11,10 +11,16 @@ namespace demowebapi.Controllers
     public class FruitsController: ControllerBase
     {
         static List<string> Fruits=new List<string>{"Apple","Mango","Banana","Orange","Kivi","Watermellon","Chikku","Straberry"};
-    [HttpPost]
-    public IEnumerable<string> Get()
+    [HttpGet]
+   // [Route("ShowFruits")]
+    public IEnumerable<string> GetFruits()
     {
         return Fruits;
+    }
+    [HttpGet("{id}")]
+    public string GetSingleFruit(int id)
+    {
+      return Fruits[id];
     }
     }
   
