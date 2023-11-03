@@ -17,7 +17,8 @@ namespace demowebapi.Controllers
     {
         return Fruits;
     }
-    [HttpGet("{id}")]
+    [HttpGet]
+    [Route("ShowFruits/{id}")]
     public string GetSingleFruit(int id)
     {
       return Fruits[id];
