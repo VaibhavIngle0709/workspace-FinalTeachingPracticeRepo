@@ -10,6 +10,12 @@ namespace demowebapi.Controllers
     [Route("api/[Controller]")]
     public class FruitsController: ControllerBase
     {
-
+        static List<string> Fruits=new List<string>{"Apple","Mango","Banana","Orange","Kivi","Watermellon","Chikku","Straberry"};
+    [HttpPost]
+    public IEnumerable<string> Get()
+    {
+        return Fruits;
     }
+    }
+  
 }
