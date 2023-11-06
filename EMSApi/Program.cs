@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
+using EMSApi.Models;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -10,7 +12,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var connectionString=builder.Configuration.GetConnectionString("MyCon");
-builder.Services.AddDbContext<EntDbContext>(options=>options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<EmsDbContext>(options=>options.UseSqlServer(connectionString));
+
+builder.Services.AddTransient<IDepartment,DepartmentRepository>();
 
 var app = builder.Build();
 
