@@ -8,7 +8,7 @@ using EMSApi.Models;
 namespace EMSApi.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class DepartmentController : ControllerBase
     {
         IDepartment repo;
