@@ -23,6 +23,24 @@ namespace demowebapi.Controllers
     {
       return Fruits[id];
     }
+
+    [HttpPost]
+    [Route("AddFruit")]
+    public void Post([FromBody]string a){
+        Fruits.Add(a);
+    }
+ 
+    [HttpPut]
+    [Route("Edit/{id}")]
+    public void Put(int id,[FromBody] string a){
+        Fruits[id]=a;
+    }
+   
+    [HttpDelete]
+    [Route("Kill/{id}")]
+    public void Delete(int id){
+        Fruits.Remove(Fruits[id]);
+    }
     
     }
   
