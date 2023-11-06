@@ -31,7 +31,7 @@ namespace EMSApi.Controllers
             if(ModelState.IsValid)
             {
                 repo.AddDept(d);
-                return created("Added Successfully");
+                return Created("Added Successfully",d);
             }
             return BadRequest("Unable to add");
 
@@ -50,6 +50,14 @@ namespace EMSApi.Controllers
         {
             repo.EditDept(department);
             return Ok();
+        }
+
+        [HttpDelete]
+        [Route("DeleteDept/{id}")]
+        public IActionResult Delete(int id)
+        {
+            repo.DeleteDept(id);
+            return Ok("Deleted");
         }
     }
 }
