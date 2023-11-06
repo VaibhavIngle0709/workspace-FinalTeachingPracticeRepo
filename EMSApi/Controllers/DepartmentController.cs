@@ -24,5 +24,17 @@ namespace EMSApi.Controllers
             var data=repo.GetDepartments();
             return Ok(data);
         } 
+        [HttpPost]
+        [Route("Create")]
+        public IActionResult PostDept(Department d)
+        {
+            if(ModelState.IsValid)
+            {
+                repo.AddDept(d);
+                return Ok("Added Successfully");
+            }
+            return BadRequest("Unable to add");
+
+        }
     }
 }
