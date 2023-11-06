@@ -31,10 +31,25 @@ namespace EMSApi.Controllers
             if(ModelState.IsValid)
             {
                 repo.AddDept(d);
-                return Ok("Added Successfully");
+                return created("Added Successfully");
             }
             return BadRequest("Unable to add");
 
+        }
+        [HttpPost]
+        [Route("ListDept/{id}")]
+        public IActionResult GetDeptById(int id)
+        {
+            var data=repo.FindDept(id);
+            return Ok(data);
+        }
+
+        [HttpPut]
+        [Route("EditDept/{id}")]
+        public IActionResult PutDept(int id,Department department)
+        {
+            repo.EditDept(department);
+            return Ok();
         }
     }
 }
