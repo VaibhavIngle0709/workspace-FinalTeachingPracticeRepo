@@ -10,6 +10,7 @@ namespace moviewebapi.Models
     {
         virtual public DbSet<Detail> Details{get;set;}
         virtual public  DbSet<Movie> Movies{get;set;}
+        
         public EntDbContext(){}
         public EntDbContext(DbContextOptions<EntDbContext> options):base(options){}
 
