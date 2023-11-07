@@ -21,6 +21,11 @@ namespace moviewebapi.Models
             {
                 optionsBuilder.UseSqlServer("User ID=sa;password=examlyMssql@123; server=localhost;Database=EntDb;trusted_connection=false;Persist Security Info=False;Encrypt=False;");
             }
+            
+        }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Movie_VM>().HasNoKey();
         }
     }
 }

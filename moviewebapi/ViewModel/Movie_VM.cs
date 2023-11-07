@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace moviewebapi.ViewModel
 {
+    
     public class Movie_VM
     {
        public string Name{get;set;}
