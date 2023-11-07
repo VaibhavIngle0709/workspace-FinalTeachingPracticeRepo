@@ -93,6 +93,17 @@ namespace moviewebapi.Controllers
             }
 
         }
+        [HttpGet]
+        [Route("DisplayMovies/{Rating}/{Year}")]
+        public IActionResult Get(int Rating,int Year)
+        {
+            var data=from m in context.Movies where m.Rating==Rating && m.YearRelease==Year select m;
+            if(data.Count()==0)
+            {
+                return NotFound("No Movies Found");
+            }
+            return  Ok(data);
+        }
 
 
         
