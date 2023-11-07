@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using moviewebapi.ViewModel;
 
 namespace moviewebapi.Models
 {
@@ -10,7 +11,7 @@ namespace moviewebapi.Models
     {
         virtual public DbSet<Detail> Details{get;set;}
         virtual public  DbSet<Movie> Movies{get;set;}
-        
+        virtual public DbSet<Movie_VM> Movie_VMs{get;set;}
         public EntDbContext(){}
         public EntDbContext(DbContextOptions<EntDbContext> options):base(options){}
 

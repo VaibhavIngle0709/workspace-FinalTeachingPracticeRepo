@@ -4,7 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using moviewebapi.Models;
-
+using moviewebapi.ViewModel;
+using Microsoft.EntityFrameworkCore;
 namespace moviewebapi.Controllers
 {
     [ApiController]
@@ -12,6 +13,16 @@ namespace moviewebapi.Controllers
     public class MovieController : ControllerBase
     {
         EntDbContext context=new EntDbContext();
+
+        [HttpGet]
+        [Route("ShowMovies")]
+        public IActionResult GetShowMovies()
+        {
+            var data=context.Movie_VMs.FromSqlInterpolated<Movie_VM>($"MovieInfo");
+            return Ok(data);
+        }
+
+
         [HttpGet]
         [Route("ListMovies")]
         public IActionResult Get()
