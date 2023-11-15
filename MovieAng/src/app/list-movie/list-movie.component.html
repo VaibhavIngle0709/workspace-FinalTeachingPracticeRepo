@@ -1,1 +1,20 @@
-<div class="jumbort">
+<div class="jumbotron">
+    <h1 class="text-danger">MOVIE LISTING</h1>
+<table class="table">
+    <thead>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>RATING</th>
+        <th>YEAR</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let m of moviedata">
+            <td>{{m.id}}</td>
+            <td>{{m.name}}</td>
+            <td>{{m.rating}}</td>
+            <td>{{m.yearRelease}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
+<p></p>
