@@ -1,9 +1,9 @@
 {
-  "name": "movie-angular",
+  "name": "movie-ang",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "",
+    "start": "ng serve --port 8081 --disable-host-check --host=0.0.0.0",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

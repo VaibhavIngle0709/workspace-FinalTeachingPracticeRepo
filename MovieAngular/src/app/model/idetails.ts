@@ -4,5 +4,4 @@ export interface IDetails {
     movieid:number;
     gender:string;
     role:string;
-    
 }
