@@ -1,1 +1,8 @@
-<p>findmovie works!</p>
+<h3>Details Of Movies {{moviedata.name}}</h3>
+<div style="background-color: lime;padding-left: 20px;">
+    Id     : {{moviedata.id}}<br><br>
+    Year   : {{moviedata.yearRelease}}<br><br>
+    Rating : {{moviedata.rating}}<br>
+</div>
+<br>
+<a [routerLink]="['/listmovies']" style="align-items: end;">BACK TO LIST</a>
