@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../MovieService/movie.service';
 import { IMovie } from '../model/imovie';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-findmovie',
@@ -8,14 +9,18 @@ import { IMovie } from '../model/imovie';
   styleUrls: ['./findmovie.component.css']
 })
 export class FindmovieComponent implements OnInit {
-  movie:IMovie
+  moviedata:IMovie
   id:number
-  constructor(private movieservice:MovieService) {
-    this.movieservice.getMovies().subscribe(data=>{this.moviedata.push(...data)})
-    console.log(this.moviedata)
+  constructor(private movieservice:MovieService,private ar:ActivatedRoute) {
    }
 
   ngOnInit() {
+    const tid=this.ar.snapshot.paramMap.get('id')
+    this.id=Number(tid)
+    this.movieservice.getMovie(this.id).subscribe((data:IMovie)=>
+    {
+      this.moviedata=data;
+    });
   }
 
 }
