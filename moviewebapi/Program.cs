@@ -9,8 +9,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var connectionString=builder.Configuration.GetConnectionString("MyCon");
-builder.Services.AddDbContext<EntDbContext>(options=>options.UseSqlServer(connectionString));
+var connectionString = builder.Configuration.GetConnectionString("MyCon");
+builder.Services.AddDbContext<EntDbContext>(options => options.UseSqlServer(connectionString));
+builder.Services.AddCors(
+
+    options => options.AddDefaultPolicy(
+     builder =>
+     {
+         builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin();
+     }
+
+    )
+);
 
 var app = builder.Build();
 
@@ -22,6 +32,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
+
+app.UseCors();
 
 app.UseAuthorization();
 
