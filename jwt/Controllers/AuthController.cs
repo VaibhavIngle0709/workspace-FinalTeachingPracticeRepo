@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens.Jwt;
+using Microsoft.Extensions.Logging;
+//using Microsoft.IdentityModel.Tokens.Jwt;
+using System.Security;
 using Microsoft.IdentityModel.Tokens;
 
 namespace jwt.Controllers
@@ -21,7 +23,16 @@ namespace jwt.Controllers
             }
             if(user.UserName=="Tom" && user.Password=="Jerry")
             {
-                var secretKey=new System
+                var secretKey=new SymmetricSecurityKey(Encoding.UTF8.GetBytes("superSecretKey@345"));
+                var signinCredential=new SignInCredentials(secretKey,SecurityAlgorithms.HmacSha256);
+                var tokenOptions=new JwtSecurityToken(
+                    issuer:"http://0.0.0.0:8080",
+                    audience:"http://0.0.0.0:8080",
+                    claims:new List<Claim>(),
+                    expires:DateTime.Now.AddMinutes(10),
+                    signingCredentials:signinCredentials
+                );
+                var token
             }
         }
     }
