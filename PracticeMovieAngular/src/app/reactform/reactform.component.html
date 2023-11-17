@@ -1,1 +1,21 @@
-<p>reactform works!</p>
+<h2>Adding Movie Data</h2>
+<hr>
+<form [formGroup]="movieform" (ngSubmit)="savedata()">
+    <div class="form-group">
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" formControlName="name" class="form-control">
+        </div>
+
+        <div>
+            <label for="year">Name</label>
+            <input type="text" id="year" name="year" formControlName="yearrelease" class="form-control">
+        </div>
+        <div>
+            <label for="rating">Name</label>
+            <input type="text" id="rating" name="rating" formControlName="rating" class="form-control">
+        </div>
+
+
+    </div>
+</form>
