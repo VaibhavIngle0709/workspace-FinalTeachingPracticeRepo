@@ -9,7 +9,7 @@ import { IMovie } from '../model/imovie';
 export class ListMovieComponent implements OnInit {
 
   moviedata:any[]=[]
-  constructor(private movieservice:MovieService) {
+  constructor(private movieservice:MovieserviceService) {
     this.movieservice.getAllMovies().subscribe(data=>{this.moviedata.push(...data)})
     console.log(this.moviedata)
    }

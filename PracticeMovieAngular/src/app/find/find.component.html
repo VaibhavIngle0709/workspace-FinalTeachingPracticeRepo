@@ -1,0 +1,17 @@
+<h1>DETAILS OF MOVIE</h1>
+
+<div class="container">
+    <div class="jumbotron">
+        <table>
+    
+        <tr><td>MOVIE ID</td>&nbsp;&nbsp;<td>{{moviedata.id}}</td></tr>
+        <tr> <td>MOVIE NAME</td>&nbsp;&nbsp;<td>{{moviedata.name}}</td></tr>
+        <tr> <td>MOVIE RATING</td>&nbsp;&nbsp;<td>{{moviedata.rating}}</td></tr>
+        <tr> <td>MOVIE RELEASE YEAR</td>&nbsp;&nbsp;<td>{{moviedata.yearRelease}}</td></tr>
+
+
+
+        </table>
+    </div>
+</div>
+<a [routerLink]="['\listmovies']">BACK TO LIST</a>

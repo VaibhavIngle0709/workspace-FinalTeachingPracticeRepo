@@ -12,7 +12,7 @@ export class MovieService {
 
   getAllMovies():Observable<IMovie[]>
   {
-    return this.httpclient.get<IMovie[]>(`${this.url}/listmovies`);
+    return this.httpclient.get<IMovie[]>(`${this.url}/ListMovies`);
   }
   movie:IMovie
   getMovie(id:number):Observable<IMovie>
