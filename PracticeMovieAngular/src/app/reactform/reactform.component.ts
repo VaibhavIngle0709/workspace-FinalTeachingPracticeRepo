@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { IMovie } from '../model/imovie';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MovieserviceService } from '../services/movieservice.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-reactform',
@@ -9,10 +11,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class ReactformComponent implements OnInit {
   moviedata:IMovie
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,private ms:MovieserviceService,private route:Router,ar:ActivatedRoute) { }
   movieform=this.fb.group({
     name:['',Validators.required],
-    yearrelease:['',[Validators.min(2000),Validators.max[2023]]],
+    yearrelease:['',[Validators.min(2000),Validators.max(2023)]],
     rating:['',[Validators.required,Validators.min(1),Validators.max(5)]]
   })
   savedata():void
@@ -23,7 +25,13 @@ export class ReactformComponent implements OnInit {
       alert('Error in ratings')
       return
     }
-    console.log(this.moviedata);
+    //console.log(this.moviedata);
+    this.ms.addMovie(this.moviedata).subscribe(
+      ()=>{
+        alert('Record Added Successfully')
+        this.route.navigate(['/listmovies'])
+      }
+    )
 
   }
 

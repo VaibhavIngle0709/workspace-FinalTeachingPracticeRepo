@@ -34,7 +34,8 @@ import { ReactformComponent } from './reactform/reactform.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     
 
   ],
