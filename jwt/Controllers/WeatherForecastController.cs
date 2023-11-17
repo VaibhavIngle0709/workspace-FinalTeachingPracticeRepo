@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
+using Microsoft.AspNetCore.Authorization;
 namespace jwt.Controllers;
 
 [ApiController]
@@ -17,7 +18,7 @@ public class WeatherForecastController : ControllerBase
     {
         _logger = logger;
     }
-
+    [Authorize]
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
