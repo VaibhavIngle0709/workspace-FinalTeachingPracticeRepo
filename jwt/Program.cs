@@ -13,8 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication(opt=>{
     opt.DefaultAuthenticateScheme=JwtBearerDefaults.AuthenticationScheme;
     opt.DefaultChallengeScheme=JwtBearerDefaults.AuthenticationScheme;
-})
-  .AddJwtBearer(options =>
+}).AddJwtBearer(options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {

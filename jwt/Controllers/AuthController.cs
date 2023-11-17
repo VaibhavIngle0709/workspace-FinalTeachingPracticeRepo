@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-//using Microsoft.IdentityModel.Tokens.Jwt;
-using System.Security;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 
 namespace jwt.Controllers
@@ -32,8 +33,10 @@ namespace jwt.Controllers
                     expires:DateTime.Now.AddMinutes(10),
                     signingCredentials:signinCredentials
                 );
-                var token
+                var tokenString=new JwtSecurityTokenHandler().writeToken(tokenOptions);
+                return ok(new AuthenticateResponse(tokenOptions=tokenString));
             }
+            return Unauthorized();
         }
     }
 }
