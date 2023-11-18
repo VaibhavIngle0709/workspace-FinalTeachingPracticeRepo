@@ -14,6 +14,7 @@ import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { EditmovieComponent } from './editmovie/editmovie.component';
 import { DeletemovieComponent } from './deletemovie/deletemovie.component';
 import { ReactformComponent } from './reactform/reactform.component';
+import { CreatedetailsComponent } from './createdetails/createdetails.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,9 @@ import { ReactformComponent } from './reactform/reactform.component';
     
     DeletemovieComponent,
     
-    ReactformComponent
+    ReactformComponent,
+    
+    CreatedetailsComponent
   ],
   imports: [
     BrowserModule,

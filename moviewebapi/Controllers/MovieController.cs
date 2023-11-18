@@ -152,7 +152,7 @@ namespace moviewebapi.Controllers
              d.Actor=detail.Actor;
              d.MovieId=detail.MovieId;
              d.Role=detail.Role;
-             d.Gender=detail.Gender;
+             d.gender=detail.gender;
              context.SaveChanges();
              return Ok();
             }

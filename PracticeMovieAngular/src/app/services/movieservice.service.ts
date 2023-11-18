@@ -32,6 +32,6 @@ export class MovieserviceService {
   }
   deleteMovie(id:number):Observable<IMovie>
   {
-    return this.httpclient.delete<IMovie>(this.url+'?id='+id)
+    return this.httpclient.delete<IMovie>(this.url+'/deletemovie/'+'?id='+id)
   }
 }
