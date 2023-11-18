@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
 import{ IMovie} from '../model/imovie';
-import {HttpClient,HttpHeaders} from '@angular/common/http';
+import {HttpClient,HttpErrorResponse,HttpHeaders} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { IDetail } from '../model/idetail';
+import { HttpResponse } from '@angular/common/http';
+import { throwError } from 'rxjs';
+import {catchError} from 'rxjs/operators'
 @Injectable({
   providedIn: 'root'
 })
@@ -18,12 +21,12 @@ export class MovieserviceService {
   }
   getMovie(id:number):Observable<IMovie>
   {
-    return this.httpclient.get<IMovie>(this.url+'/ListMovies/'+id)
+    return this.httpclient.get<IMovie>(this.url+'/ListMovies/'+id).pipe(catchError(this.handleError))
   }
 
   getDetail(id:number):Observable<IDetail>
   {
-    return this.httpclient.get<IDetail>(this.url+'/ListDetails/'+id)
+    return this.httpclient.get<IDetail>(this.url+'/ListDetails/'+id).pipe(catchError(this.handleError)
   }
 
   httpOptions={headers:new HttpHeaders({'Content-type':'application/json'})}
@@ -35,16 +38,22 @@ export class MovieserviceService {
 
   editMovie(moviedata:IMovie):Observable<IMovie>
   {
-    return this.httpclient.put<IMovie>(this.url+'/EditMovie/'+moviedata.id,moviedata,this.httpOptions)
+    return this.httpclient.put<IMovie>(this.url+'/EditMovie/'+moviedata.id,moviedata,this.httpOptions).pipe(catchError(this.handleError)
   }
   deleteMovie(id:number):Observable<IMovie>
   {
-    return this.httpclient.delete<IMovie>(this.url+'/deletemovie/'+'?id='+id)
+    return this.httpclient.delete<IMovie>(this.url+'/deletemovie/'+'?id='+id).pipe(catchError(this.handleError)
   }
 
   addDetails(detailsdata : IDetail ): Observable<IDetail>
 {
   return this.httpclient.post<IDetail>(this.url2 + '/AddDetails/',detailsdata,this.httpOptions)
+}
+
+handleError(error:HttpErrorResponse)
+{
+  var errmsg=error.status+'\n'+error.error
+    
 }
 
 
