@@ -22,7 +22,7 @@ namespace moviewebapi.Controllers
         // }
         public IActionResult Get()
         {
-            var data=from i in context.Details select new{i.DetailId,i.MovieId,i.Movie.Name,i.Actor,i.Role};
+            var data=from i in context.Details select new{i.DetailsId,i.MovieId,i.Movie.Name,i.Actor,i.Role};
             return Ok(data);
         }
  
@@ -35,7 +35,7 @@ namespace moviewebapi.Controllers
             {
                 return BadRequest("Id cannot be null");
             }
-            var data = (from m in context.Details where m.DetailId==id select m).FirstOrDefault();
+            var data = (from m in context.Details where m.DetailsId==id select m).FirstOrDefault();
             return Ok(data);
         }
  
