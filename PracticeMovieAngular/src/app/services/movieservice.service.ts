@@ -26,7 +26,7 @@ export class MovieserviceService {
 
   getDetail(id:number):Observable<IDetail>
   {
-    return this.httpclient.get<IDetail>(this.url+'/ListDetails/'+id).pipe(catchError(this.handleError)
+    return this.httpclient.get<IDetail>(this.url+'/ListDetails/'+id).pipe(catchError(this.handleError))
   }
 
   httpOptions={headers:new HttpHeaders({'Content-type':'application/json'})}
@@ -38,11 +38,11 @@ export class MovieserviceService {
 
   editMovie(moviedata:IMovie):Observable<IMovie>
   {
-    return this.httpclient.put<IMovie>(this.url+'/EditMovie/'+moviedata.id,moviedata,this.httpOptions).pipe(catchError(this.handleError)
+    return this.httpclient.put<IMovie>(this.url+'/EditMovie/'+moviedata.id,moviedata,this.httpOptions).pipe(catchError(this.handleError))
   }
   deleteMovie(id:number):Observable<IMovie>
   {
-    return this.httpclient.delete<IMovie>(this.url+'/deletemovie/'+'?id='+id).pipe(catchError(this.handleError)
+    return this.httpclient.delete<IMovie>(this.url+'/deletemovie/'+'?id='+id).pipe(catchError(this.handleError))
   }
 
   addDetails(detailsdata : IDetail ): Observable<IDetail>
@@ -53,7 +53,8 @@ export class MovieserviceService {
 handleError(error:HttpErrorResponse)
 {
   var errmsg=error.status+'\n'+error.error
-    
+  alert(errmsg)
+  return throwError(errmsg)  
 }
 
 
