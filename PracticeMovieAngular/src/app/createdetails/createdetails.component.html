@@ -5,16 +5,19 @@
         <label for="actor">Actor Name</label>
         <input type="text" id="actor" name="actor" [(ngModel)]="detailsdata.actor" #actor="ngModel" class="form-control">
     </div>
-
+    <div>
+        <label for="movieid">Movie Id</label>
+        <select id="movieid" name="movieid" [(ngModel)]="detailsdata.movieid" class="form-control">
+            <option *ngFor="let sd of showdata" [value]="sd.id">
+                {{sd.name}}
+            </option>
+        </select>
+    </div>
     <div>
         <label for="gender">Gender</label>
         <input type="text" id="gender" name="gender" [(ngModel)]="detailsdata.gender" #actor="ngModel" class="form-control">
     </div>
 
-    <div>
-        <label for="actor">Actor Name</label>
-        <input type="text" id="actor" name="actor" [(ngModel)]="detailsdata.actor" #actor="ngModel" class="form-control">
-    </div>
     <div>
         <label for="role">Select Role</label>
         <select id="role" name="role" [(ngModel)]="detailsdata.role" class="form-control">

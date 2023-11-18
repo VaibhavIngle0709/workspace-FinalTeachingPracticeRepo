@@ -39,7 +39,7 @@ export class MovieserviceService {
 
   addDetails(detailsdata : IDetail ): Observable<IDetail>
 {
-  return this.httpclient.post<IDetail>(this.url2 + '/AddDetails',detailsdata,this.httpOptions)
+  return this.httpclient.post<IDetail>(this.url2 + '/AddDetails/',detailsdata,this.httpOptions)
 }
 
 
