@@ -129,45 +129,7 @@ namespace moviewebapi.Controllers
             return Ok(data);
         }
 
-        [HttpPost]
-        [Route("AddDetails")]
-        public IActionResult Post(Detail detail)
-        {
-           if(ModelState.IsValid)
-           {
-            context.Details.Add(detail);
-            context.SaveChanges();
-            return Created("Record added",detail);
-           }
-           return BadRequest("Data is not valid");
-        }
- 
-        [HttpPut]
-        [Route("EditDetails/{id}")]
-        public IActionResult Put(int id, Detail detail)
-        {
-            if(ModelState.IsValid)
-            {
-             Detail d=context.Details.Find(id);
-             d.Actor=detail.Actor;
-             d.MovieId=detail.MovieId;
-             d.Role=detail.Role;
-             d.gender=detail.gender;
-             context.SaveChanges();
-             return Ok();
-            }
-            return BadRequest("Unable to edit");
-        }
        
-        [HttpDelete]
-        [Route("DeleteDetails/{id}")]
-        public IActionResult Delete(int id)
-        {
-           var data=context.Details.Find(id);
-           context.Details.Remove(data);
-           context.SaveChanges();
-           return Ok();
-        }
  
 
 

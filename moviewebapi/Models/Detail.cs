@@ -16,7 +16,7 @@ namespace moviewebapi.Models
     public class Detail
     {
         [Key]
-        public int DetailsId{get;set;}
+        public int DetailId{get;set;}
         [Required]
         [MaxLength(30)]
         public string Actor{get;set;}
@@ -24,7 +24,7 @@ namespace moviewebapi.Models
         public int MovieId{get;set;}
         public string gender{get;set;}
         public string Role{get;set;}
-        public Movie? Movies{get;set;}
+        public Movie? Movie{get;set;}
 
     }
 }
