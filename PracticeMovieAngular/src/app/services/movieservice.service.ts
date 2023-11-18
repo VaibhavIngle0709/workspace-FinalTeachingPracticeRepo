@@ -26,7 +26,7 @@ export class MovieserviceService {
 
   getDetail(id:number):Observable<IDetail>
   {
-    return this.httpclient.get<IDetail>(this.url+'/ListDetails/'+id).pipe(catchError(this.handleError))
+    return this.httpclient.get<IDetail>(this.url2+'/ListDetails/'+id).pipe(catchError(this.handleError))
   }
 
   httpOptions={headers:new HttpHeaders({'Content-type':'application/json'})}
@@ -53,7 +53,7 @@ export class MovieserviceService {
 handleError(error:HttpErrorResponse)
 {
   var errmsg=error.status+'\n'+error.error
-  alert(errmsg)
+ // alert(errmsg)
   return throwError(errmsg)  
 }
 
